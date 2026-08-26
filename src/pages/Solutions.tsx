@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Reveal, SectionHeading } from '@/components/common'
 import { Button } from '@/components/ui/Button'
 import { SOLUTIONS } from '@/data/solutions'
@@ -107,6 +107,46 @@ function SolutionsHero() {
 }
 
 function SolutionsGrid() {
+  useEffect(() => {
+    const style = document.createElement('style')
+    style.textContent = `
+      article[id]:target {
+        border-color: #0066FF !important;
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15), 0 20px 40px -12px rgba(0, 102, 255, 0.2) !important;
+        transform: translateY(-2px);
+        animation: targetHighlight 2s ease-out;
+      }
+      @keyframes targetHighlight {
+        0% { box-shadow: 0 0 0 6px rgba(0, 102, 255, 0.3), 0 20px 40px -12px rgba(0, 102, 255, 0.2); }
+        100% { box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15), 0 20px 40px -12px rgba(0, 102, 255, 0.2); }
+      }
+    `
+    document.head.appendChild(style)
+
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const targetId = window.location.hash.slice(1)
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }, 50)
+        }
+      }
+    }
+
+    // Handle initial load
+    handleHashChange()
+
+    // Handle hash changes while on the same page
+    window.addEventListener('hashchange', handleHashChange)
+
+    return () => {
+      document.head.removeChild(style)
+      window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [])
+
   return (
     <section id="solutions-grid" className="py-10 sm:py-14 lg:py-18 bg-white" aria-labelledby="solutions-grid-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -128,8 +168,12 @@ function SolutionsGrid() {
               return (
                 <article
                   key={solution.id}
+                  id={solution.id}
                   className="group relative rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-500 hover:border-transparent hover:shadow-2xl hover:-translate-y-2"
-                  style={{ transitionDelay: `${index * 60}ms` }}
+                  style={{ 
+                    transitionDelay: `${index * 60}ms`,
+                    scrollMarginTop: '96px' // Account for fixed navbar (72px + 24px buffer)
+                  }}
                 >
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${hexToRgba(hex, 0.03)}, transparent)` }} aria-hidden="true" />
                   <div className="relative flex flex-col h-full">
@@ -156,15 +200,7 @@ function SolutionsGrid() {
                           {feature}
                         </li>
                       ))}
-                    </ul>
-                    <div className="pt-4 border-t border-slate-100">
-                      <Button variant="ghost" className="w-full text-sm" to={`/solutions/${solution.id}`}>
-                        Explore
-                        <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </Button>
-                    </div>
+</ul>
                   </div>
                 </article>
               )

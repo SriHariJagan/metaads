@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/home/Hero'
 import { MetricsSection } from '@/components/sections/home/MetricsSection'
 import { ProblemSection } from '@/components/sections/home/ProblemSection'
 import { PlatformIntroSection } from '@/components/sections/home/PlatformIntro'
+import { EcosystemSection } from '@/components/sections/home/EcosystemSection'
 import { SolutionsGrid } from '@/components/sections/home/SolutionsGrid'
 import { DashboardSection } from '@/components/sections/home/DashboardSection'
 import { HowItWorksSection } from '@/components/sections/home/HowItWorks'
@@ -19,6 +20,7 @@ export function Home() {
       <MetricsSection />
       <ProblemSection />
       <PlatformIntroSection />
+      <EcosystemSection currentId="metaads" />
       <SolutionsGrid />
       <DashboardSection />
       <HowItWorksSection />

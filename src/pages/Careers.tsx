@@ -30,7 +30,7 @@ const deptColors: Record<string, string> = {
 
 function CareersHero() {
   return (
-    <section className="relative py-10 sm:py-14 lg:py-18 overflow-hidden bg-meta-navy-950" aria-labelledby="careers-hero-heading">
+    <section className="relative overflow-hidden bg-meta-navy-950 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24" aria-labelledby="careers-hero-heading">
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-meta-blue/20 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-meta-violet/15 via-transparent to-transparent" />
@@ -39,21 +39,21 @@ function CareersHero() {
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <Reveal variant="up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-8">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inset-0 h-full w-full rounded-full bg-meta-cyan opacity-75 motion-safe:animate-ping" />
               <span className="relative h-full w-full rounded-full bg-meta-cyan" />
             </span>
-            <span className="text-xs font-medium text-meta-cyan">We're hiring</span>
+            <span className="text-xs font-medium tracking-wide text-meta-cyan">We're hiring</span>
           </span>
         </Reveal>
         <Reveal variant="up" delay={100}>
-          <h1 id="careers-hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+          <h1 id="careers-hero-heading" className="text-4xl sm:text-5xl lg:text-[4.2rem] font-bold tracking-tight text-white leading-[0.98]">
             Build the advertising OS for the AI era
           </h1>
         </Reveal>
         <Reveal variant="up" delay={200}>
-          <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-7 text-lg sm:text-xl text-white/65 max-w-3xl mx-auto leading-relaxed">
             We're a small, high-trust team solving hard problems in advertising technology. Come do the best work of your career.
           </p>
         </Reveal>
@@ -67,7 +67,7 @@ function StatsSection() {
     <section className="relative py-12 sm:py-16 lg:py-20 bg-white" aria-labelledby="stats-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
-          <div className="relative -mt-10 sm:-mt-12 z-10">
+          <div className="relative -mt-14 sm:-mt-16 z-10">
             <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
                 {CAREER_STATS.map((stat, index) => {
