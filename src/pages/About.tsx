@@ -125,7 +125,7 @@ function FoundersSection() {
 
                 <div className="p-7 sm:p-9 lg:p-10 flex flex-col h-full">
                   {/* Image + Role badge */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
+                  <div className="flex flex-col items-center sm:flex-row sm:items-center gap-6 mb-6">
                     <div className="relative flex-shrink-0">
                       <div
                         className="relative h-36 w-36 sm:h-40 sm:w-40 rounded-[1.2rem] overflow-hidden ring-4 ring-white shadow-xl"
@@ -136,7 +136,7 @@ function FoundersSection() {
                         <img
                           src={founder.image}
                           alt={founder.name}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>
@@ -152,7 +152,7 @@ function FoundersSection() {
                     </div>
 
                     <div className="flex-1 min-w-0 text-center sm:text-left">
-                      <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-meta-navy">
+                      <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-brand-black">
                         {founder.name}
                       </h3>
                       <p
@@ -170,14 +170,14 @@ function FoundersSection() {
                   </p>
 
                   {/* Highlights */}
-                  <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100">
-                    {founder.highlights.map((h, _i) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-100">
+                    {founder.highlights.map((h) => (
                       <div
                         key={h.label}
-                        className="group relative p-4 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 hover:shadow-md transition-all duration-300 text-center"
+                        className="group relative flex items-center gap-4 p-4 rounded-xl bg-slate-50/80 border border-slate-100 hover:bg-white hover:border-slate-200 hover:shadow-md transition-all duration-300 text-left sm:block sm:text-center"
                       >
                         <div
-                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 sm:mb-3"
                           style={{ backgroundColor: founder.accentLight }}
                         >
                           <h.icon
@@ -186,12 +186,14 @@ function FoundersSection() {
                             aria-hidden="true"
                           />
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
-                          {h.label}
-                        </p>
-                        <p className="text-[11px] font-medium text-slate-700 leading-snug">
-                          {h.desc}
-                        </p>
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
+                            {h.label}
+                          </p>
+                          <p className="text-[11px] font-medium text-slate-700 leading-snug">
+                            {h.desc}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>

@@ -15,7 +15,9 @@
   --color-focus-ring: rgba(129, 140, 248, 0.4);
   --color-page-bg: #0f172a;
 
-  --font-family-base: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-family-base:
+    "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+    sans-serif;
   --font-size-sm: 0.875rem;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -61,7 +63,8 @@
   --navbar-accent-end: #4f7bff;
   --navbar-cta-text: #ffffff;
   --navbar-cta-shadow: 0 4px 16px rgba(53, 201, 255, 0.2);
-  --navbar-cta-glow: 0 10px 32px rgba(53, 201, 255, 0.4), 0 4px 16px rgba(79, 123, 255, 0.3);
+  --navbar-cta-glow:
+    0 10px 32px rgba(53, 201, 255, 0.4), 0 4px 16px rgba(79, 123, 255, 0.3);
 
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.12);
@@ -101,7 +104,11 @@
   --product-accent-rose: 251 113 133;
   --product-grad-rose-1: 253 164 175;
   --product-grad-rose-2: 244 63 94;
-  --glass-navy: linear-gradient(180deg, rgba(17, 28, 55, 0.96) 0%, rgba(8, 15, 34, 0.98) 100%);
+  --glass-navy: linear-gradient(
+    180deg,
+    rgba(17, 28, 55, 0.96) 0%,
+    rgba(8, 15, 34, 0.98) 100%
+  );
 }
 
 /* ==================================================================== */
@@ -115,7 +122,11 @@
 }
 
 :global([data-theme="light"]) .footer {
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    var(--color-surface) 100%
+  );
 }
 
 .footer::before {
@@ -173,13 +184,14 @@
   position: absolute;
   z-index: 0;
   right: -1%;
-  bottom: -8%;
+  bottom: -4%;
   font-size: clamp(7rem, 16vw, 13rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.03em;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-text) 10%, transparent);
+  -webkit-text-stroke: 1px
+    color-mix(in srgb, var(--color-text) 10%, transparent);
   /* Logo-inspired brand gradient — shimmer sweeps through MetaAds palette (cyan→blue→violet→magenta→pink→red→orange) */
   background: linear-gradient(
     115deg,
@@ -283,7 +295,9 @@
     0 4px 18px rgba(0, 14, 65, 0.12);
   ring: 1px solid rgba(15, 23, 42, 0.08);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .brandLogoWrap:hover {
@@ -545,6 +559,159 @@
     transform var(--transition-fast);
 }
 
+/* ---------- Product link with logo ---------- */
+
+.productItem {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  overflow: visible;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.productItem:hover {
+  border-color: var(--navbar-accent);
+  box-shadow:
+    0 0 20px -4px color-mix(in srgb, var(--navbar-accent) 45%, transparent),
+    0 0 40px -8px color-mix(in srgb, var(--navbar-accent) 20%, transparent);
+}
+
+.productLogoWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: visible;
+  flex-shrink: 0;
+  background: rgba(29, 29, 29, 0.568);
+  border: 1px solid var(--color-border);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.productItem:hover .productLogoWrap {
+  border-color: var(--navbar-accent);
+  box-shadow: 0 0 14px -2px
+    color-mix(in srgb, var(--navbar-accent) 55%, transparent);
+}
+
+.productLogo {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.productLogoLight {
+  display: none;
+}
+
+.productLogoDark {
+  display: block;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+:global([data-theme="light"]) .productLogoLight {
+  display: block;
+}
+
+:global([data-theme="light"]) .productLogoDark {
+  display: none;
+}
+
+.productItem:hover .productLogo {
+  transform: scale(1.15);
+}
+
+/* Animated border ring on hover */
+.productRing {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: var(--navbar-accent-start);
+  border-right-color: var(--navbar-accent-end);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  animation: productRingSpin 2s linear infinite;
+  pointer-events: none;
+}
+
+.productItem:hover .productRing {
+  opacity: 1;
+}
+
+@keyframes productRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Product label — tooltip on logo hover */
+.productLabel {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+  background: var(--glass-navy);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+  z-index: 10;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme="light"]) .productLabel {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
+  border-color: var(--color-border);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Tooltip arrow */
+.productLabel::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--glass-navy);
+}
+
+:global([data-theme="light"]) .productLabel::after {
+  border-top-color: rgba(255, 255, 255, 0.95);
+}
+
+.productItem:hover .productLabel {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ---------- Bottom bar ---------- */
 
 .bottom {
@@ -640,7 +807,11 @@
 
 .badge:hover {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--badge-icon, var(--navbar-accent)) 45%, var(--color-border));
+  border-color: color-mix(
+    in srgb,
+    var(--badge-icon, var(--navbar-accent)) 45%,
+    var(--color-border)
+  );
 }
 
 .badge svg {
@@ -758,7 +929,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-1);
-    margin-top: .2rem;
+    margin-top: 0.2rem;
   }
 
   .linkRow > .colHeading {
@@ -810,7 +981,7 @@
     font-size: 0.7rem;
   }
 
-  .brandCol{
+  .brandCol {
     background: transparent;
     border-bottom: none;
   }

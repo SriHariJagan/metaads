@@ -12,7 +12,6 @@ import {
   Loader2,
   CheckCircle2,
   Send,
-  Briefcase,
   LifeBuoy,
   Handshake,
   UserPlus,
@@ -48,13 +47,6 @@ const AD_SPENDS = [
 ];
 
 const channels = [
-  // {
-  //   icon: Briefcase,
-  //   title: "Sales",
-  //   desc: "Plans, pricing, and demos",
-  //   color: "#0066FF",
-  //   value: "sales@metaads.com",
-  // },
   {
     icon: LifeBuoy,
     title: "Support",
@@ -90,8 +82,6 @@ const METADEV_CONTACT_EMAILS = [
   "contact@metadev.in",
   "support@metadev.in",
   "business@metadev.in",
-  "tech@metadev.in",
-  "partnership@metadev.in",
 ];
 
 const METADEV_OFFICES = [
@@ -130,42 +120,106 @@ interface FormErrors {
 function ContactHero() {
   return (
     <section
-      className="relative overflow-hidden bg-meta-navy-950 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24"
+      className="relative py-16 sm:py-20 lg:py-28 overflow-hidden bg-meta-navy-950"
       aria-labelledby="contact-hero-heading"
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-meta-blue/20 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-meta-violet/15 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-meta-magenta/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full opacity-10"
-          style={{
-            background: "radial-gradient(circle, #00B8FF 0%, transparent 60%)",
-          }}
+          className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gradient/10 blur-3xl"
         />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-        <Reveal variant="up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-8">
-            <span className="text-xs font-medium tracking-wide text-meta-cyan">
-              Get in touch
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <Reveal variant="up">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-6">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inset-0 h-full w-full rounded-full bg-meta-cyan opacity-75 motion-safe:animate-ping" />
+                <span className="relative h-full w-full rounded-full bg-meta-cyan" />
+              </span>
+              <span className="text-xs font-medium text-white/80">
+                We're here to help
+              </span>
             </span>
-          </span>
-        </Reveal>
-        <Reveal variant="up" delay={100}>
-          <h1
-            id="contact-hero-heading"
-            className="text-4xl sm:text-5xl lg:text-[4.2rem] font-bold tracking-tight text-white leading-[0.98]"
-          >
-            Let's talk about your growth
-          </h1>
-        </Reveal>
-        <Reveal variant="up" delay={200}>
-          <p className="mt-7 text-lg sm:text-xl text-white/65 max-w-3xl mx-auto leading-relaxed">
-            Whether you're ready to start a trial, need enterprise pricing, or
-            just have questions — our solutions engineers are here to help.
-          </p>
-        </Reveal>
+          </Reveal>
+
+          <Reveal variant="up" delay={100}>
+            <h1
+              id="contact-hero-heading"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08]"
+            >
+              Let's talk about your{" "}
+              <span className="text-brand-gradient">growth</span>
+            </h1>
+          </Reveal>
+
+          <Reveal variant="up" delay={200}>
+            <p className="mt-5 text-lg sm:text-xl text-white/55 max-w-2xl mx-auto leading-relaxed">
+              Whether you're ready to start a trial, need enterprise pricing,
+              or just have questions — our solutions engineers are here to help.
+            </p>
+          </Reveal>
+
+          <Reveal variant="up" delay={300}>
+            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-xl mx-auto">
+              {[
+                { value: "< 4 hrs", label: "Response time" },
+                { value: "98%", label: "Satisfaction" },
+                { value: "24/7", label: "Enterprise" },
+                { value: "500+", label: "Advertisers" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3"
+                >
+                  <p className="text-2xl sm:text-3xl font-bold text-white">
+                    {stat.value}
+                  </p>
+                  <p className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal variant="up" delay={400}>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                variant="brand"
+                to="#contact-form"
+                className="w-full sm:w-auto text-sm"
+              >
+                Send us a message
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </Button>
+              <Button
+                variant="light-outline"
+                href="mailto:hello@metaads.com"
+                className="w-full sm:w-auto text-sm"
+              >
+                Email us directly
+              </Button>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -174,47 +228,46 @@ function ContactHero() {
 function ChannelsSection() {
   return (
     <section
-      className="relative py-12 sm:py-16 lg:py-20 bg-white"
+      className="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden"
       aria-labelledby="channels-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
-          <div className="relative -mt-14 sm:-mt-16 z-10">
-            <div className="rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
-                {channels.map((ch) => {
-                  const Icon = ch.icon;
-                  return (
-                    <div key={ch.title} className="flex items-center gap-4 p-6">
-                      <div
-                        className="h-12 w-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: `${ch.color}12` }}
-                      >
-                        <Icon
-                          className="h-6 w-6"
-                          style={{ color: ch.color }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="font-semibold text-meta-navy text-sm">
-                          {ch.title}
-                        </h3>
-                        <p className="text-xs text-slate-400 mt-0.5">
-                          {ch.desc}
-                        </p>
-                        <p
-                          className="text-xs font-medium mt-1 truncate"
-                          style={{ color: ch.color }}
-                        >
-                          {ch.value}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {channels.map((ch) => {
+              const Icon = ch.icon;
+              return (
+                <div
+                  key={ch.title}
+                  className="group relative rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div className="absolute inset-x-0 top-0 h-[3px] rounded-t-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{ backgroundColor: ch.color }}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center mb-4"
+                    style={{ backgroundColor: `${ch.color}10` }}
+                  >
+                    <Icon
+                      className="h-6 w-6"
+                      style={{ color: ch.color }}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="font-semibold text-meta-navy text-sm">
+                    {ch.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">{ch.desc}</p>
+                  <p
+                    className="text-xs font-medium mt-3 truncate"
+                    style={{ color: ch.color }}
+                  >
+                    {ch.value}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </Reveal>
       </div>
@@ -249,7 +302,8 @@ function ContactFormSection() {
     if (!formData.reason) newErrors.reason = "Please select a reason";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     else if (formData.message.trim().length < 20)
-      newErrors.message = "Please provide more detail (at least 20 characters)";
+      newErrors.message =
+        "Please provide more detail (at least 20 characters)";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData]);
@@ -295,11 +349,30 @@ function ContactFormSection() {
 
   return (
     <section
-      className="py-12 sm:py-16 lg:py-20 bg-slate-50 overflow-hidden"
+      id="contact-form"
+      className="relative py-16 sm:py-20 lg:py-28 bg-slate-50 overflow-hidden"
       aria-labelledby="contact-form-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16">
+      <div className="absolute inset-0" aria-hidden="true">
+        <div
+          className="absolute top-0 right-1/4 h-[400px] w-[400px] rounded-full opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(circle, #0066FF 0%, transparent 60%)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-1/4 h-[300px] w-[300px] rounded-full opacity-[0.04]"
+          style={{
+            background:
+              "radial-gradient(circle, #8B5CF6 0%, transparent 60%)",
+          }}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+          {/* Left column — Info */}
           <div>
             <Reveal variant="up">
               <SectionHeading
@@ -310,6 +383,7 @@ function ContactFormSection() {
                 align="left"
               />
             </Reveal>
+
             <Reveal variant="up" delay={100}>
               <div className="mt-12 space-y-5">
                 {[
@@ -372,6 +446,7 @@ function ContactFormSection() {
                 })}
               </div>
             </Reveal>
+
             <Reveal variant="up" delay={200}>
               <div className="mt-12 rounded-2xl bg-white border border-slate-200 p-6">
                 <h3 className="font-semibold text-meta-navy text-sm mb-4">
@@ -385,7 +460,11 @@ function ContactFormSection() {
                       color: "#0066FF",
                     },
                     { label: "Pricing", time: "< 8 hrs", color: "#00B8FF" },
-                    { label: "Enterprise", time: "< 24 hrs", color: "#8B5CF6" },
+                    {
+                      label: "Enterprise",
+                      time: "< 24 hrs",
+                      color: "#8B5CF6",
+                    },
                     { label: "Support", time: "< 1 hr", color: "#D946EF" },
                   ].map((item) => (
                     <div
@@ -411,11 +490,12 @@ function ContactFormSection() {
             </Reveal>
           </div>
 
+          {/* Right column — Form */}
           <div>
             <Reveal variant="up" delay={150}>
               {submitStatus === "success" ? (
                 <div
-                  className="rounded-2xl bg-white border border-slate-200 p-8 sm:p-12 text-center"
+                  className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 text-center"
                   role="status"
                 >
                   <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-meta-cyan/10 mb-6">
@@ -440,7 +520,7 @@ function ContactFormSection() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm"
+                  className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm"
                 >
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-4">
                     <Input
@@ -534,7 +614,10 @@ function ContactFormSection() {
                       ) : (
                         <>
                           Send message
-                          <Send className="h-4 w-4 ml-2" aria-hidden="true" />
+                          <Send
+                            className="h-4 w-4 ml-2"
+                            aria-hidden="true"
+                          />
                         </>
                       )}
                     </Button>
@@ -580,59 +663,97 @@ function ContactFormSection() {
 function NewsletterSection() {
   return (
     <section
-      className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden"
-      aria-labelledby="newsletter-heading"
+      className="relative py-20 sm:py-24 lg:py-32 overflow-hidden bg-white"
+      aria-labelledby="cta-heading"
     >
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-meta-blue/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-meta-blue/5 via-transparent to-transparent" />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] opacity-[0.03]"
+          style={{
+            background: "radial-gradient(circle, #0066FF 0%, transparent 50%)",
+          }}
+        />
       </div>
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <Reveal variant="up">
-          <div className="max-w-3xl mx-auto">
-            <div className="rounded-3xl bg-gradient-to-br from-meta-navy-950 to-meta-navy-900 p-10 sm:p-14 text-center relative overflow-hidden">
-              <div
-                className="absolute top-0 right-0 h-[200px] w-[200px] opacity-20"
-                style={{
-                  background:
-                    "radial-gradient(circle, #0066FF 0%, transparent 60%)",
-                }}
-                aria-hidden="true"
+          <div className="inline-flex items-center gap-2 rounded-full border border-meta-blue/20 bg-meta-blue/5 px-4 py-1.5 mb-6">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inset-0 h-full w-full rounded-full bg-meta-blue opacity-75 motion-safe:animate-ping" />
+              <span className="relative h-full w-full rounded-full bg-meta-blue" />
+            </span>
+            <span className="text-xs font-medium text-meta-blue">
+              Stay in the loop
+            </span>
+          </div>
+        </Reveal>
+
+        <Reveal variant="up" delay={100}>
+          <h2
+            id="cta-heading"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-meta-navy leading-tight"
+          >
+            Growth insights, monthly
+          </h2>
+        </Reveal>
+
+        <Reveal variant="up" delay={200}>
+          <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
+            No spam. Just actionable ad strategy, platform updates, and
+            customer stories. Unsubscribe anytime.
+          </p>
+        </Reveal>
+
+        <Reveal variant="up" delay={300}>
+          <form
+            className="mt-10 max-w-md mx-auto"
+            noValidate
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="you@company.com"
+                className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-meta-navy placeholder:text-slate-400 focus:border-meta-blue focus:ring-2 focus:ring-meta-blue/20 focus:outline-none transition-all"
+                required
               />
-              <div
-                className="absolute bottom-0 left-0 h-[150px] w-[150px] opacity-15"
-                style={{
-                  background:
-                    "radial-gradient(circle, #8B5CF6 0%, transparent 60%)",
-                }}
-                aria-hidden="true"
-              />
-              <div className="relative">
-                <h2
-                  id="newsletter-heading"
-                  className="text-2xl sm:text-3xl font-bold text-white"
-                >
-                  Growth insights, monthly
-                </h2>
-                <p className="mt-3 text-white/60 max-w-md mx-auto">
-                  No spam. Just actionable ad strategy, platform updates, and
-                  customer stories. Unsubscribe anytime.
-                </p>
-                <form className="mt-8 max-w-md mx-auto" noValidate>
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      placeholder="you@company.com"
-                      className="flex-1 rounded-lg border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-meta-cyan focus:ring-2 focus:ring-meta-cyan/20 focus:outline-none backdrop-blur-sm"
-                      required
-                    />
-                    <Button type="submit" className="whitespace-nowrap">
-                      Subscribe
-                      <Send className="h-4 w-4 ml-2" aria-hidden="true" />
-                    </Button>
-                  </div>
-                </form>
-              </div>
+              <Button type="submit" className="whitespace-nowrap">
+                Subscribe
+                <Send className="h-4 w-4 ml-2" aria-hidden="true" />
+              </Button>
             </div>
+            <p className="mt-4 text-xs text-slate-400">
+              Join 2,000+ marketers. We respect your inbox.
+            </p>
+          </form>
+        </Reveal>
+
+        <Reveal variant="up" delay={400}>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
+            {[
+              "No credit card required",
+              "14-day free trial",
+              "Cancel anytime",
+              "Implementation support",
+            ].map((item) => (
+              <span key={item} className="flex items-center gap-1.5">
+                <svg
+                  className="h-3.5 w-3.5 text-meta-cyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                {item}
+              </span>
+            ))}
           </div>
         </Reveal>
       </div>
