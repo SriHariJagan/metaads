@@ -52,21 +52,21 @@ const channels = [
     title: "Support",
     desc: "Account & campaign help",
     color: "#00B8FF",
-    value: "support@metaads.com",
+    value: "support@metadev.in",
   },
   {
     icon: Handshake,
     title: "Partnerships",
     desc: "Integrations & collaborations",
     color: "#8B5CF6",
-    value: "partners@metaads.com",
+    value: "partnership@metadev.in",
   },
   {
     icon: UserPlus,
     title: "Careers",
     desc: "Questions about open roles",
     color: "#D946EF",
-    value: "careers@metaads.com",
+    value: "careers@metadev.in",
   },
   {
     icon: Phone,
@@ -128,9 +128,7 @@ function ContactHero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-meta-violet/15 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-meta-magenta/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-        <div
-          className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gradient/10 blur-3xl"
-        />
+        <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gradient/10 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -159,32 +157,9 @@ function ContactHero() {
 
           <Reveal variant="up" delay={200}>
             <p className="mt-5 text-lg sm:text-xl text-white/55 max-w-2xl mx-auto leading-relaxed">
-              Whether you're ready to start a trial, need enterprise pricing,
-              or just have questions — our solutions engineers are here to help.
+              Whether you're ready to start a trial, need enterprise pricing, or
+              just have questions — our solutions engineers are here to help.
             </p>
-          </Reveal>
-
-          <Reveal variant="up" delay={300}>
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-xl mx-auto">
-              {[
-                { value: "< 4 hrs", label: "Response time" },
-                { value: "98%", label: "Satisfaction" },
-                { value: "24/7", label: "Enterprise" },
-                { value: "500+", label: "Advertisers" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3"
-                >
-                  <p className="text-2xl sm:text-3xl font-bold text-white">
-                    {stat.value}
-                  </p>
-                  <p className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider mt-1">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </Reveal>
 
           <Reveal variant="up" delay={400}>
@@ -241,7 +216,8 @@ function ChannelsSection() {
                   key={ch.title}
                   className="group relative rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
-                  <div className="absolute inset-x-0 top-0 h-[3px] rounded-t-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  <div
+                    className="absolute inset-x-0 top-0 h-[3px] rounded-t-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{ backgroundColor: ch.color }}
                     aria-hidden="true"
                   />
@@ -302,8 +278,7 @@ function ContactFormSection() {
     if (!formData.reason) newErrors.reason = "Please select a reason";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     else if (formData.message.trim().length < 20)
-      newErrors.message =
-        "Please provide more detail (at least 20 characters)";
+      newErrors.message = "Please provide more detail (at least 20 characters)";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData]);
@@ -357,15 +332,13 @@ function ContactFormSection() {
         <div
           className="absolute top-0 right-1/4 h-[400px] w-[400px] rounded-full opacity-[0.04]"
           style={{
-            background:
-              "radial-gradient(circle, #0066FF 0%, transparent 60%)",
+            background: "radial-gradient(circle, #0066FF 0%, transparent 60%)",
           }}
         />
         <div
           className="absolute bottom-0 left-1/4 h-[300px] w-[300px] rounded-full opacity-[0.04]"
           style={{
-            background:
-              "radial-gradient(circle, #8B5CF6 0%, transparent 60%)",
+            background: "radial-gradient(circle, #8B5CF6 0%, transparent 60%)",
           }}
         />
       </div>
@@ -444,48 +417,6 @@ function ContactFormSection() {
                     </div>
                   );
                 })}
-              </div>
-            </Reveal>
-
-            <Reveal variant="up" delay={200}>
-              <div className="mt-12 rounded-2xl bg-white border border-slate-200 p-6">
-                <h3 className="font-semibold text-meta-navy text-sm mb-4">
-                  Response time commitments
-                </h3>
-                <div className="space-y-3">
-                  {[
-                    {
-                      label: "Demo requests",
-                      time: "< 4 hrs",
-                      color: "#0066FF",
-                    },
-                    { label: "Pricing", time: "< 8 hrs", color: "#00B8FF" },
-                    {
-                      label: "Enterprise",
-                      time: "< 24 hrs",
-                      color: "#8B5CF6",
-                    },
-                    { label: "Support", time: "< 1 hr", color: "#D946EF" },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex items-center justify-between"
-                    >
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="h-2 w-2 rounded-full"
-                          style={{ backgroundColor: item.color }}
-                        />
-                        <span className="text-sm text-slate-600">
-                          {item.label}
-                        </span>
-                      </div>
-                      <span className="text-sm font-semibold text-meta-navy">
-                        {item.time}
-                      </span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </Reveal>
           </div>
@@ -614,10 +545,7 @@ function ContactFormSection() {
                       ) : (
                         <>
                           Send message
-                          <Send
-                            className="h-4 w-4 ml-2"
-                            aria-hidden="true"
-                          />
+                          <Send className="h-4 w-4 ml-2" aria-hidden="true" />
                         </>
                       )}
                     </Button>
@@ -700,8 +628,8 @@ function NewsletterSection() {
 
         <Reveal variant="up" delay={200}>
           <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
-            No spam. Just actionable ad strategy, platform updates, and
-            customer stories. Unsubscribe anytime.
+            No spam. Just actionable ad strategy, platform updates, and customer
+            stories. Unsubscribe anytime.
           </p>
         </Reveal>
 
