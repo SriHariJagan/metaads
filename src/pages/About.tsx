@@ -1,3 +1,4 @@
+import { SEO } from '@/seo/SEO';
 import { Reveal, SectionHeading } from "@/components/common";
 import { Button } from "@/components/ui/Button";
 import { COMPANY_VALUES } from "@/data/values";
@@ -624,6 +625,7 @@ function CTASection() {
 export function About() {
   return (
     <>
+      <SEO />
       <AboutHero />
       <MissionSection />
       <BeliefsSection />

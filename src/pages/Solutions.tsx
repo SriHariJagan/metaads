@@ -1,3 +1,4 @@
+import { SEO } from '@/seo/SEO';
 import { useState, useEffect } from 'react'
 import { Reveal, SectionHeading } from '@/components/common'
 import { Button } from '@/components/ui/Button'
@@ -638,6 +639,7 @@ function CTASection() {
 export function Solutions() {
   return (
     <>
+      <SEO />
       <SolutionsHero />
       <SolutionsGrid />
       <SolutionShowcase />

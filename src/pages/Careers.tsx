@@ -1,3 +1,4 @@
+import { SEO } from '@/seo/SEO';
 import { useState, useCallback } from 'react'
 import { Reveal, SectionHeading } from '@/components/common'
 import { Button } from '@/components/ui/Button'
@@ -518,6 +519,7 @@ function CTASection() {
 export function Careers() {
   return (
     <>
+      <SEO />
       <CareersHero />
       <StatsSection />
       <PerksSection />

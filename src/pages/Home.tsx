@@ -1,3 +1,4 @@
+import { SEO } from '@/seo/SEO';
 import { Hero } from '@/components/sections/home/Hero'
 import { MetricsSection } from '@/components/sections/home/MetricsSection'
 import { ProblemSection } from '@/components/sections/home/ProblemSection'
@@ -16,6 +17,7 @@ import { CTASection } from '@/components/sections/home/CTASection'
 export function Home() {
   return (
     <>
+      <SEO />
       <Hero />
       <MetricsSection />
       <ProblemSection />

@@ -1,3 +1,4 @@
+import { SEO } from '@/seo/SEO';
 import { useState, useCallback } from "react";
 import { Reveal, SectionHeading } from "@/components/common";
 import { Button } from "@/components/ui/Button";
@@ -59,7 +60,7 @@ const channels = [
     title: "Partnerships",
     desc: "Integrations & collaborations",
     color: "#8B5CF6",
-    value: "partnership@metadev.in",
+    value: "partnership@metaads.in",
   },
   {
     icon: UserPlus,
@@ -81,7 +82,7 @@ const METADEV_CONTACT_EMAILS = [
   "info@metadev.in",
   "contact@metadev.in",
   "support@metadev.in",
-  "business@metadev.in",
+  "partnership@metaads.in",
 ];
 
 const METADEV_OFFICES = [
@@ -692,6 +693,7 @@ function NewsletterSection() {
 export function Contact() {
   return (
     <>
+      <SEO />
       <ContactHero />
       <ChannelsSection />
       <ContactFormSection />
