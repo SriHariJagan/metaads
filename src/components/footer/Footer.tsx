@@ -164,7 +164,7 @@ const FOOTER_SECTIONS: FooterSection[] = [
         href: "https://metaedu.in",
         external: true,
         logo: metaEdu,
-        accent: "#f97316",
+        accent: "#0d9488",
       },
       {
         label: "MetaGreen",
