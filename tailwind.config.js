@@ -38,11 +38,18 @@ export default {
       animation: {
         float: 'float 7s ease-in-out infinite',
         'float-slow': 'float 11s ease-in-out infinite',
+        'scroll-dot': 'scroll-dot 1.9s cubic-bezier(0.65, 0, 0.35, 1) infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-14px)' },
+        },
+        'scroll-dot': {
+          '0%': { transform: 'translateY(0)', opacity: '0' },
+          '15%': { opacity: '1' },
+          '70%': { transform: 'translateY(10px)', opacity: '1' },
+          '100%': { transform: 'translateY(14px)', opacity: '0' },
         },
       },
     },

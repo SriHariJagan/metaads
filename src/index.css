@@ -5,6 +5,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Hide the native page scrollbar so content runs edge to edge;
+       the floating brand scrollbar in PageScrollbar takes over. */
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   body {
     @apply bg-white font-sans text-meta-navy/80 antialiased;
@@ -52,6 +58,54 @@
       linear-gradient(rgba(0, 14, 65, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 14, 65, 0.05) 1px, transparent 1px);
     background-size: 44px 44px;
+  }
+
+  /* Compact branded scrollbar for horizontal scrollers */
+  .scrollbar-brand {
+    scrollbar-width: thin;
+    scrollbar-color: #4f00ff transparent;
+  }
+  .scrollbar-brand::-webkit-scrollbar {
+    height: 8px;
+  }
+  .scrollbar-brand::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-brand::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-image: linear-gradient(90deg, #0066ff 0%, #4f00ff 45%, #d600ff 100%);
+    background-clip: padding-box;
+  }
+  .scrollbar-brand::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(90deg, #3385ff 0%, #7a33ff 45%, #e133ff 100%);
+  }
+
+  /* Floating page scrollbar thumb */
+  .page-scrollbar-thumb {
+    background-image: linear-gradient(
+      180deg,
+      #00b8ff 0%,
+      #0066ff 26%,
+      #4f00ff 52%,
+      #d600ff 74%,
+      #ff0066 100%
+    );
+    background-size: 100% 220%;
+    box-shadow:
+      0 0 10px rgba(79, 0, 255, 0.45),
+      inset 0 0 2px rgba(255, 255, 255, 0.55);
+    animation: page-scrollbar-flow 7s ease-in-out infinite;
+  }
+
+  @keyframes page-scrollbar-flow {
+    0%,
+    100% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 50% 100%;
+    }
   }
 }
 

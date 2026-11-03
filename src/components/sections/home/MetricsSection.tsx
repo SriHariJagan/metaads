@@ -7,7 +7,7 @@ const hexColors = ['#0066FF', '#00B8FF', '#8B5CF6']
 
 export function MetricsSection() {
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden" aria-labelledby="metrics-heading">
+    <section id="metrics" className="relative scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-white overflow-hidden" aria-labelledby="metrics-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
           <div className="relative">

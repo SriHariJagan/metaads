@@ -45,14 +45,14 @@ export function SolutionsGrid() {
         </Reveal>
 
         <Reveal variant="up" delay={200}>
-          <div className="mt-12 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible min-w-max sm:min-w-0">
+          <div className="scrollbar-brand -mx-4 mt-12 snap-x snap-mandatory scroll-px-4 overflow-x-auto bg-transparent px-4 pb-5 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+            <div className="flex min-w-max gap-5 sm:grid sm:min-w-0 sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4">
               {SOLUTIONS.map((solution, index) => {
                 const hex = COLOR_MAP[solution.color] ?? '#0066FF'
                 return (
                   <article
                     key={solution.id}
-                    className="group relative w-[280px] sm:w-auto flex-shrink-0 rounded-2xl bg-white border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                    className="group relative w-[280px] snap-start sm:w-auto flex-shrink-0 rounded-2xl bg-white border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
                     style={{ transitionDelay: `${index * 50}ms` }}
                   >
                     <div className="h-2" style={{ background: `linear-gradient(to right, ${hex}, ${hex}88)` }} aria-hidden="true" />

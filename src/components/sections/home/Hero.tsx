@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" aria-hidden="true" />
       <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gradient/10 blur-3xl sm:h-80 sm:w-80 lg:h-[420px] lg:w-[420px]" aria-hidden="true" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pt-16 pb-10 sm:px-6 sm:pt-20 sm:pb-14 lg:px-8 lg:pt-24 lg:pb-16">
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-24 pb-12 sm:px-6 sm:pt-32 sm:pb-16 lg:px-8 lg:pt-36 lg:pb-20">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
           {/* Left: copy */}
           <div className="relative z-10">
@@ -198,11 +198,19 @@ export function Hero() {
       </div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 motion-safe:animate-bounce lg:block" aria-hidden="true">
-        <svg className="h-5 w-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
+      <a
+        href="#metrics"
+        className="group absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 lg:flex"
+        aria-label="Scroll to explore"
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/35 transition-colors duration-300 group-hover:text-white/70">
+          Scroll
+        </span>
+        <span className="relative flex h-11 w-7 items-start justify-center rounded-full border border-white/15 bg-white/[0.04] p-2 shadow-[0_0_30px_rgba(0,184,255,0.12)] backdrop-blur-sm transition-all duration-300 group-hover:border-meta-cyan/40 group-hover:bg-white/[0.08] group-hover:shadow-[0_0_36px_rgba(0,184,255,0.22)]">
+          <span className="h-2 w-1 rounded-full bg-gradient-to-b from-meta-cyan via-meta-blue to-meta-violet motion-safe:animate-scroll-dot" />
+        </span>
+        <span className="h-7 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent transition-colors duration-300 group-hover:from-meta-cyan/60" />
+      </a>
     </section>
   )
 }
